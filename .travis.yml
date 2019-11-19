@@ -7,6 +7,12 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
     - $HOME/.m2/
+addons:
+  sonarcloud:
+    organization: "steklopod-github"
+    token:
+      secure: ede0ba60e942e9c2e8f3635521134de9cc4d6d6b
+
 before_install:
   - chmod +x gradlew
 install: skip
@@ -14,6 +20,8 @@ install: skip
 script:
   - ./gradlew tasks
   - ./gradlew build
+after_script:
+  - ./gradlew sonarqube
 
 notifications:
   email:
