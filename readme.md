@@ -1,6 +1,6 @@
 # Gradle `dockerMain` plugin  [![Build Status](https://travis-ci.org/steklopod/gradle-docker-main-plugin.svg?branch=master)](https://travis-ci.org/steklopod/gradle-docker-main-plugin)
 
-🛡️ Gradle `dockerMain` plugin for root multi-project
+🛡️ [`dockerMain` - gradle plugin](https://plugins.gradle.org/plugin/online.colaba.dockerMain) for easy deploy multiprojects.
 
 ### Structure must be
 ```shell script
