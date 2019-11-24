@@ -1,8 +1,6 @@
-plugins {
-    //plugins{ id("online.colaba.dockerMain") }
-}
+plugins { id("online.colaba.dockerMain") version "0.1.7" }
 
-repositories { jcenter(); mavenCentral() }
+repositories { jcenter()}
 
-defaultTasks("tasks", "composeDev")
+defaultTasks("tasks", "compose")
 

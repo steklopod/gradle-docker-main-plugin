@@ -7,17 +7,19 @@ plugins {
     id("org.sonarqube") version "2.8"
 }
 
-val pluginsVersion = "0.1.4"
+val pluginsVersion = "0.1.7"
 description = "EASY-DEPLOY gradle needed tasks"
 version = pluginsVersion
 group = "online.colaba"
 
 repositories { mavenLocal(); mavenCentral() }
 
+val dockerMainPlugin = "dockerMainPlugin"
+
 gradlePlugin {
     plugins {
-        val dockerMainPlugin by registering {
-            id = "online.colaba.dockerMain"; implementationClass = "online.colaba.DockerMain"
+        create(dockerMainPlugin) {
+            id = "$group.dockerMain"; implementationClass = "$group.DockerMainPlugin"
             description = "Docker needed tasks for root multi-project"
         }
     }
@@ -29,10 +31,9 @@ pluginBundle {
     vcsUrl = "https://github.com/steklopod/gradle-docker-plugin"
 
     (plugins) {
-        "dockerMainPlugin" {
-            displayName = "\uD83D\uDEE1️ Gradle dockerMain plugin for root multi-project."
-            tags =
-                listOf("docker", "kotlin", "deploy", "build.gradle.kts", "docker-compose", "\uD83E\uDD1F\uD83C\uDFFB")
+        dockerMainPlugin {
+            displayName = "\uD83D\uDEE1️ Gradle dockerMain plugin for root multi-project. "
+            tags = listOf("docker", "kotlin", "deploy", "build.gradle.kts", "docker-compose", "\uD83E\uDD1F\uD83C\uDFFB")
             version = pluginsVersion
         }
 

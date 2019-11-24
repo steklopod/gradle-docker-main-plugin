@@ -2,12 +2,6 @@
 
 🛡️ Gradle `dockerMain` plugin for root multi-project
 
-### Requirement
-
-* `backend`'s **jar** distribution path: `${project.rootDir}/backend/build/libs/*.jar`
-
-* `frontend`'s **dist** folder path: `${project.rootDir}/frontend/dist`
-
 ### Structure must be
 ```shell script
  root
@@ -37,7 +31,7 @@
 2. In your `build.gradle.kts` file:
 ```kotlin
 plugins {
-     id("online.colaba.dockerMain") version "0.1.4"
+     id("online.colaba.dockerMain") version "0.1.7"
 }
 ```
 
@@ -70,3 +64,8 @@ Optional tasks:
 * `composeDev` - compose up all docker-services from `docker-compose.dev.yml` file with recreate and rebuild. 
 Depends on `backend:assemble`;
 * `recomposeAllDev` - compose up after removing current docker-service from `docker-compose.dev.yml` file. 
+
+___
+* `backend`'s **jar** distribution path: `${project.rootDir}/backend/build/libs/*.jar`
+
+* `frontend`'s **dist** folder path: `${project.rootDir}/frontend/dist`
