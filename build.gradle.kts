@@ -1,5 +1,4 @@
 import org.gradle.api.JavaVersion.VERSION_11
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
@@ -46,15 +45,16 @@ dependencies {
 
 configure<JavaPluginConvention> { sourceCompatibility = VERSION_11; targetCompatibility = VERSION_11 }
 
-tasks {
-    withType<Wrapper> { gradleVersion = "6.0" }
-    withType<KotlinCompile> { kotlinOptions { jvmTarget = "11" } }
-}
 
+kotlinDslPluginOptions { experimentalWarning.set(false) }
+
+tasks {
+    wrapper { gradleVersion = "6.0" }
+    val java = "11"
+    compileKotlin { kotlinOptions { jvmTarget = java }; sourceCompatibility = java; targetCompatibility = java }
+}
 sonarqube {
-    properties {
-        property("sonar.projectKey", "steklopod_gradle-ssh-plugin")
-    }
+    properties { property("sonar.projectKey", "steklopod_gradle-ssh-plugin") }
 }
 
 defaultTasks("tasks", "publishPlugins")
